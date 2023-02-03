@@ -13,24 +13,23 @@ jobs:
     strategy:
       matrix:
         OS: ['ubuntu-latest', '18.04']
-        node_version: ['12']
     
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node_version }}
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node_version }}   
+        node-version: 12   
     
-    - name: npm install, build and test
-      run: |
-        npm install
-        npm run build --if-present
-        npm install-ci-test
-        npm test
     
   build:
     needs: test
+
+strategy:
+      matrix:
+        OS: ['ubuntu-latest', '18.04']
+        node_version: ['12']
+
     runs-on: ${{ matrix.OS }}
 
     steps:
