@@ -8,27 +8,11 @@ on:
 
 jobs:
 
-  test:
-    runs-on: ${{ matrix.OS }}
+  build:
+  
     strategy:
       matrix:
         OS: ['ubuntu-latest', '18.04']
-    
-    steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node_version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12   
-    
-    
-  build:
-    needs: test
-
-strategy:
-      matrix:
-        OS: ['ubuntu-latest', '18.04']
-        node_version: ['12']
 
     runs-on: ${{ matrix.OS }}
 
