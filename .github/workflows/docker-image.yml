@@ -12,7 +12,7 @@ jobs:
   
     strategy:
       matrix:
-        OS: ['ubuntu-latest', '18.04']
+        OS: ['18.04','ubuntu-latest']
 
     runs-on: ${{ matrix.OS }}
 
