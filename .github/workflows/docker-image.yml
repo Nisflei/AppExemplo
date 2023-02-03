@@ -29,7 +29,7 @@ jobs:
 
   
   build:
-
+    needs: test
     runs-on: ${{ matrix.OS }}
 
     steps:
