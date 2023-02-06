@@ -22,5 +22,5 @@ jobs:
         username: nisflei
     # Password or personal access token used to log against the Docker registry - Criar um segredo
         #password: pietra#1509
-        password: ${{ secrets.GITHUB_TOKEN }}
+        password: ${{ secrets.PWDDOCKER }}
     
