@@ -1,0 +1,39 @@
+name: Deploy to Render.com
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Build app
+        run: |
+          ./gradlew build
+
+      - name: Login to Render.com
+        uses: renderapp/render-action@v1
+        with:
+          command: login
+          renderEmail: ${{ secrets.RENDER_EMAIL }}
+          renderPassword: ${{ secrets.RENDER_PASSWORD }}
+
+      - name: Deploy app
+        uses: renderapp/render-action@v1
+        with:
+          command: deploy
+          context: production
+          imageName: myapp
+          dockerfile: Dockerfile
+          port: 8080
+          startCommand: java -jar build/libs/myapp.jar
