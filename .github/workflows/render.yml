@@ -5,15 +5,11 @@ on:
     branches: [ "master" ]
 
 jobs:
-
-  deploy:
-    name: Wait for Deploy
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: Render Service Deploy
-  # You may pin to the exact commit or the version.
-  # uses: ungnome/render-service-deploy@ef0c9be42c3c3b5bde75ce79fc814061a3150da4
-      uses: ungnome/render-service-deploy@v1.0.0
-      with:
-        webhook: https://api.render.com/deploy/srv-chqcehu7avjb90k0mkgg?key=ChWJVifi0PQ
-        api-key: rnd_SyH0v2X3MilD4N6biHLjZAULLYut
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: srv-chqcehu7avjb90k0mkgg?key=ChWJVifi0PQ
+          api-key: rnd_SyH0v2X3MilD4N6biHLjZAULLYut
