@@ -21,4 +21,4 @@ jobs:
       uses: sws2apps/render-deployment@v1.2.0
       with:
           # The Service ID of your Render service
-          serviceId: https://api.render.com/deploy/srv-chqcehu7avjb90k0mkgg?key=ChWJVifi0PQ    
+          serviceId: srv-chqcehu7avjb90k0mkgg?key=ChWJVifi0PQ    
