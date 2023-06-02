@@ -6,19 +6,14 @@ on:
 
 jobs:
 
-  build:
-  
-    strategy:
-      matrix:
-        OS: ['ubuntu-latest']
-
-    runs-on: ${{ matrix.OS }}
-
+  deploy:
+    name: Wait for Deploy
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Render Deployment
-      uses: sws2apps/render-deployment@v1.2.0
-      with:
-          # The Service ID of your Render service
-          serviceId: ChWJVifi0PQ    
+      - name: Wait for Render Deployment
+        uses: bounceapp/render-action@0.6.0
+        with:
+          service-id: srv-chqcehu7avjb90k0mkgg
+          retries: 20
+          wait: 16000
+          sleep: 30000   
