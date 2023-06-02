@@ -10,12 +10,12 @@ jobs:
     name: Wait for Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for Render Deployment
-        uses: bounceapp/render-action@0.6.0
-        with:
-          render-token: rnd_SyH0v2X3MilD4N6biHLjZAULLYut
-          github-token: xx
-          service-id: srv-chqcehu7avjb90k0mkgg
-          retries: 20
-          wait: 16000
-          sleep: 30000   
+    - name: Render Service Deploy
+  # You may pin to the exact commit or the version.
+  # uses: ungnome/render-service-deploy@ef0c9be42c3c3b5bde75ce79fc814061a3150da4
+      uses: ungnome/render-service-deploy@v1.0.0
+      with:
+    # Serice deploy webhook
+          webhook: https://api.render.com/deploy/srv-chqcehu7avjb90k0mkgg?key=ChWJVifi0PQ
+    # API Key
+          api-key: rnd_SyH0v2X3MilD4N6biHLjZAULLYut  
